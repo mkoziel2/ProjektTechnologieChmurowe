@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: production
+  labels:
+    app: frontend
+spec:
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      containers:
+        - name: frontend
+          image: frontend:001
+          imagePullPolicy: Never   
+  replicas: 2
+  selector:
+    matchLabels:
+      app: frontend
